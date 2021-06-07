@@ -1,7 +1,7 @@
 @page "/Area_Chart"
 @inject NavigationManager NavigationManager
 @inject HttpClient HttpClient
-
+@inject IJSRuntime JS
 <Tabs>
     <TabPane Key="1">
         <Tab>示例1</Tab>
@@ -25,6 +25,9 @@
     {
         base.OnAfterRender(firstRender);
         example.Chart = chart;
+        JS.InvokeVoidAsync("console.log", new AntDesign.Charts.Components.Configs.Options { Padding = 45.5f });
+        JS.InvokeVoidAsync("console.log", new AntDesign.Charts.Components.Configs.Options { Padding = new float[] { 45, 87 } });
+        JS.InvokeVoidAsync("console.log", new AntDesign.Charts.Components.Configs.Options { Padding = AntDesign.Charts.Components.Configs.AutoValue.Instance });
     }
 
     #region 示例1
